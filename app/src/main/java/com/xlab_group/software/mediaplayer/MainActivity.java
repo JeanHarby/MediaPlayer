@@ -4,6 +4,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     MediaPlayer mediaPlayer;
@@ -16,6 +17,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void PlaySound(View view) {
         mediaPlayer.start();
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            public void onCompletion(MediaPlayer mp) {
+                Toast.makeText(getApplicationContext(), "Player Complete!", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     public void PauseSound(View view) {
